@@ -1,2 +1,4 @@
 # set cache to 1 day
 Header set Cache-Control "max-age=86400, public, must-revalidate"
+
+Header always unset X-Frame-Options
