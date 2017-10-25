@@ -83,6 +83,20 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 	    resetSize();
 	};
 
+	addEvent = function(element, evnt, funct){
+		if (element.attachEvent)
+			return element.attachEvent('on'+evnt, funct);
+		else
+			return element.addEventListener(evnt, funct, false);
+	}
+
+	// example
+	// addEvent(
+	// 	document.getElementById('myElement'),
+	// 	'click',
+	// 	function () { alert('hi!'); }
+	// );
+
 	var init = function(){
 		if (document.createEvent) { // W3C
 	    	var ev = document.createEvent('Event');
@@ -95,6 +109,17 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 			element.fireEvent("onresize",event);
 		}
 		resetSize();
+
+		if (typeof ga === 'function') {
+			aTag = document.getElementsByTagName('a');
+			for (var x = 0; x < aTag.length; x++) {
+				addEvent(aTag[x], 'click', function(e){
+					// e.preventDefault();
+					element = e.path[0];
+					ga('send', 'event', 'anchor tags', 'clicks', 'a tag clicks', element.href);
+				});
+			}
+		};
 	}
 	var checkLoad = function() {
 		document.readyState !== "complete" ? setTimeout(checkLoad, 11) : init();   
