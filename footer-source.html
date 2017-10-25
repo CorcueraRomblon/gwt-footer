@@ -96,6 +96,17 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 	// 	'click',
 	// 	function () { alert('hi!'); }
 	// );
+	callBackTimeout = function(callback, opt_timeout) {
+	  var called = false;
+	  function fn() {
+	    if (!called) {
+	      called = true;
+	      callback();
+	    }
+	  }
+	  setTimeout(fn, opt_timeout || 1000);
+	  return fn;
+	}
 
 	var init = function(){
 		if (document.createEvent) { // W3C
@@ -112,20 +123,21 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 
 		if (typeof ga === 'function') {
 			aTag = document.getElementsByTagName('a');
+			var gaSent = false;
 			for (var x = 0; x < aTag.length; x++) {
 				addEvent(aTag[x], 'click', function(e){
+					if(gaSent == true)
+						return true;
 					e.preventDefault();
 					element = e.path[0];
-					ga('send', 'event', {
-				    eventCategory: 'Outbound Link',
-				    eventAction: 'click',
-				    eventLabel: element.href,
-				    transport: 'beacon',
-				    hitCallback: function() {
+
+					ga('send', 'event', 'Outbound Link', element.href, {
+				    hitCallback: callBackTimeout(function() {
+				    	gaSent = true;
 				      console.log('ga sent');
-				    }
+				  		element.click();
+				    })
 				  });
-				  // element.click();
 				});
 			}
 		};
