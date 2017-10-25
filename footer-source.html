@@ -122,7 +122,9 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 		resetSize();
 
 		if (typeof ga === 'function') {
+			ga('create', 'UA-107134498-Y', 'auto');
 			ga('require', 'eventTracker');
+			ga('send', 'pageview');
 		};
 	}
 	var checkLoad = function() {
@@ -136,6 +138,8 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107134498-3"></script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<script async src="vendor/autotrack/autotrack.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -143,6 +147,5 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 
   gtag('config', 'UA-107134498-3');
 </script>
-<script async src="vendor/autotrack/autotrack.js"></script>
 </body>
 </html>
