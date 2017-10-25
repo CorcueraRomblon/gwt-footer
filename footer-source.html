@@ -120,9 +120,12 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 				    eventCategory: 'Outbound Link',
 				    eventAction: 'click',
 				    eventLabel: element.href,
-				    transport: 'beacon'
+				    transport: 'beacon',
+				    hitCallback: function() {
+				      console.log('ga sent');
+				    }
 				  });
-				  element.click();
+				  // element.click();
 				});
 			}
 		};
