@@ -48,21 +48,21 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 					<h4>About GOVPH</h4>
 					<p>Learn more about the Philippine government, its structure, how government works and the people behind it.</p>
 					<ul>
-						<li><a href="http://www.gov.ph/">GOV.PH</a></li>
-						<li><a href="http://www.gov.ph/data">Open Data Portal</a></li>
-						<li><a href="http://www.officialgazette.gov.ph">Official Gazette</a></li>
+						<li><a ga-on="click" ga-event-category="External Links" ga-event-action="gov.ph" href="http://www.gov.ph/">GOV.PH</a></li>
+						<li><a ga-on="click" ga-event-category="External Links" ga-event-action="data.gov.ph" href="http://www.gov.ph/data">Open Data Portal</a></li>
+						<li><a ga-on="click" ga-event-category="External Links" ga-event-action="officialgazette" href="http://www.officialgazette.gov.ph">Official Gazette</a></li>
 					</ul>
 				</div>
 				<div class="large-6 medium-6 large-offset-1 medium-offset-1 columns">
 					<h4>Government Links</h4>
 					<ul>
-						<li><a href="http://president.gov.ph/">Office of the President</a></li>
-						<li><a href="http://ovp.gov.ph/">Office of the Vice President</a></li>
-						<li><a href="http://www.senate.gov.ph/">Senate of the Philippines</a></li>
-						<li><a href="http://www.congress.gov.ph/">House of Representatives</a></li>
-						<li><a href="http://sc.judiciary.gov.ph/">Supreme Court</a></li>
-						<li><a href="http://ca.judiciary.gov.ph/">Court of Appeals</a></li>
-						<li><a href="http://sb.judiciary.gov.ph/">Sandiganbayan</a></li>
+						<li><a ga-on="click" ga-event-category="External Links" ga-event-action="president.gov.ph" href="http://president.gov.ph/">Office of the President</a></li>
+						<li><a ga-on="click" ga-event-category="External Links" ga-event-action="ovp.gov.ph" href="http://ovp.gov.ph/">Office of the Vice President</a></li>
+						<li><a ga-on="click" ga-event-category="External Links" ga-event-action="www.senate.gov.ph" href="http://www.senate.gov.ph/">Senate of the Philippines</a></li>
+						<li><a ga-on="click" ga-event-category="External Links" ga-event-action="www.congress.gov.ph" href="http://www.congress.gov.ph/">House of Representatives</a></li>
+						<li><a ga-on="click" ga-event-category="External Links" ga-event-action="sc.judiciary.gov.ph" href="http://sc.judiciary.gov.ph/">Supreme Court</a></li>
+						<li><a ga-on="click" ga-event-category="External Links" ga-event-action="ca.judiciary.gov.ph" href="http://ca.judiciary.gov.ph/">Court of Appeals</a></li>
+						<li><a ga-on="click" ga-event-category="External Links" ga-event-action="sb.judiciary.gov.ph" href="http://sb.judiciary.gov.ph/">Sandiganbayan</a></li>
 					</ul>
 				</div>
 			</div>
@@ -122,24 +122,7 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 		resetSize();
 
 		if (typeof ga === 'function') {
-			aTag = document.getElementsByTagName('a');
-			var gaSent = false;
-			for (var x = 0; x < aTag.length; x++) {
-				addEvent(aTag[x], 'click', function(e){
-					if(gaSent == true)
-						return true;
-					e.preventDefault();
-					element = e.path[0];
-
-					ga('send', 'event', 'Outbound Link', element.href, {
-				    hitCallback: callBackTimeout(function() {
-				    	gaSent = true;
-				      console.log('ga sent');
-				  		element.click();
-				    })
-				  });
-				});
-			}
+			ga('require', 'eventTracker');
 		};
 	}
 	var checkLoad = function() {
@@ -160,5 +143,6 @@ html,body{height:100%;width:100%;font-family:'Roboto',sans-serif;-webkit-font-sm
 
   gtag('config', 'UA-107134498-3');
 </script>
+<script async src="js/autotrack/autotrack.js"></script>
 </body>
 </html>
