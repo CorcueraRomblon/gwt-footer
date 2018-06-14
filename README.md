@@ -4,18 +4,6 @@
 
 The gwt-footer is a footer script generator for the Government Website Template (GWT). The main purpose of a footer generator is to provide a uniform look and feel and to comply with the guidelines on the standard footer. The footer generator automatically retrieves the updated version of html codes of the footer template to ensure that the contents and the links are up to date. We recommend the use of the footer script for **websites using static html** and **custom applications**. Those who are using the GWT for the recommended CMS will automatically use the gwt-footer script.
 
-## DEPRECATION NOTICE
- 
-Please be informed that the footer.js hosted at **igovphil.github.io** will **no longer be available** in the near future. In this case, the code will be migrated to gwhs.i.gov.ph. **Every website** that uses the GWT-footer are **urged** to modify the script. For those who are using GWT for the recommended CMS (Wordpress, Joomla, Drupal), we will be releasing a new version of the template for your website's use.
-
-**Modify this line:** 
- 
-	js.src = "//cdn.i.gov.ph/gwt-footer/footer.js";  
-
-**To this line:** 
-
-	js.src = "//gwhs.i.gov.ph/gwt-footer/footer.js"; 
-
 ## How to add footer generator
 To add the footer generator on your template, simply add this syntax after the agency footer region and before the closing **body** tag.
 
